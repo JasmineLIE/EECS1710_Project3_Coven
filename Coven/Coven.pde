@@ -1,36 +1,59 @@
 import processing.sound.*;
 
 /*
-*Coven is a game that demonstrates the manipulation of pixels.  You play as a detective who has found themselves in the lair of modern-day Witches.  You'll need to go through different channels on the T.V provided to crack the code of the locked door.
-*BG Music: https://www.youtube.com/watch?v=ioEBClyhJZU
-*/
-
+*Coven is a game that demonstrates the manipulation of pixels.  
+ *BG Music: https://www.youtube.com/watch?v=ioEBClyhJZU
+ */
+ OpeningScreen op;
+ TV tv;
+ Box pandoraBox;
 
 String gameState; //tracks the game state
+SoundFile BGM, boxClick, buttonPress, error, staticNoise, creeps;
+
 void setup() {
-  
+  size(1000, 705, P2D);
+ BGM = new SoundFile(this, "Audio/BGM.mp3");
+ boxClick = new SoundFile(this, "Audio/BoxInteract.mp3");
+ buttonPress = new SoundFile(this, "Audio/ButtonPress.mp3");
+ error = new SoundFile(this, "Audio/IncorrectCode.wav");
+ staticNoise = new SoundFile(this, "Audio/Static.mp3");
+ creeps = new SoundFile(this, "Audio/Creeps.wav");
+  BGM.loop();
+  gameState = "PREGAME";  //set up pregame first
+  op = new OpeningScreen();
+  tv = new TV();
+  tv.loadImages();
+  pandoraBox = new Box();
+  pandoraBox.loadImages();
+  pandoraBox.setup();
+
 }
 
 void draw() {
-  
+  println(gameState); //debug
+  println(mouseX+ ", " + mouseY);
+
   if (gameState == "PREGAME") {
-   preGame(); 
+    preGame();
   } else if (gameState == "PLAY") {
-   playGame(); 
+    playGame();
   } else if (gameState == "END") {
-   gameEnd(); 
+    gameEnd();
   }
-  
 }
 
 void preGame() { //the player is introduced to text on a black screen that tells them their objective
-  
+background(0);
+op.run();
 }
 
 void playGame() { //all of what happens in the game falls under here
-  
+background(0);
+tv.run();
+pandoraBox.run();
 }
 
 void gameEnd() { //the endscreen fades in once the player cracks the code
-  
+pandoraBox.run();  
 }
