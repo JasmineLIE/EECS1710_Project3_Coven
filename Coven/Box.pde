@@ -18,16 +18,16 @@ PImage box, pandoraOrig, leftArrow, rightArrow, openButton, pandora;
 float spread = 0.1;
 int numberCounter = 0;
 
-String [] numberList = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "0"};
+String [] numberList = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "0"}; //set up numbers to scroll through on the box
 
 class Box {
 
   void update() {
 
-   if (pandoraUnlocked) gameState = "END";
+   if (pandoraUnlocked) gameState = "END"; //pandoraUnlocked requires the number 3 to be inputted.  
   }
 
-  void loadImages() {
+  void loadImages() { //setup
     box = loadImage("Images/Box.png");
     pandoraOrig = loadImage("Images/Pandora.png");
     leftArrow = loadImage("Images/LeftArrow.png");
@@ -62,7 +62,7 @@ class Box {
     }
   }
 
-  void pixelDistort() {
+  void pixelDistort() { //the box will undergo pixel distortion when pandora's box is unlocked
     loadPixels();
     pandora.loadPixels();
 
@@ -106,7 +106,7 @@ println(numberCounter);
       fill(255);
       text(numberList[numberCounter], 510, 425);
     }
-    if (pandoraUnlocked) {
+    if (pandoraUnlocked) { 
       image(pandora, 0, 0);
       numberCounter++;
       if (numberCounter > numberList.length - 1) numberCounter = 0; 
@@ -116,6 +116,8 @@ println(numberCounter);
       for (int i=0; i < 10; i++) { 
         text(numberList[numberCounter], random(width), random(height));
         fill(255, 150);
+        
+        //randomly generate numbers that go through the numberList index repeatedly all over the place
       }
       textSize(70); 
       fill (255, 200);
