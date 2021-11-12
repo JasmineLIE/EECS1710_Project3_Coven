@@ -12,7 +12,7 @@ class OpeningScreen {
   void draw() {
     alphaTimer++;
     textSize(30);
-    fill(240, alphaTimer);
+    fill(240, alphaTimer); //intro text fades in
     textLeading(50);
     textAlign(CENTER);
     text(openingLines, width/2, 100);
