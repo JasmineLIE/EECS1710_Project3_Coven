@@ -3,7 +3,7 @@ ArrayList<Dot> dots;
 ArrayList<PVector> target1, target2, target3, target4, target5;
 boolean imageToggled = false;
 int scaler = 1; //use every pixel
-int threshold = 150;
+int threshold = 200;
 
 int flipCounter = 0;
 color col;
@@ -28,7 +28,7 @@ class Animation {
     target4 = new ArrayList<PVector>();
     target5 = new ArrayList<PVector>();
 
-    col = (255);
+    col = (#88C499);
 
     for (int x = 0; x < p1.width; x += scaler) {
       for (int y = 0; y < p1.height; y += scaler) {
@@ -106,7 +106,7 @@ class Animation {
 
 
   void draw() {
-
+blendMode(LIGHTEST);
     boolean flipTargets = true;
 
     for (Dot dot : dots) {
@@ -132,10 +132,7 @@ class Animation {
           int targetIndex = int(random(0, target4.size()));
           dot.target = target4.get(targetIndex);
           dot.col = col;
-        } else { 
-
-          dot.col = (0);
-        }
+        } 
       }
         imageToggled = !imageToggled;
       }
