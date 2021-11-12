@@ -8,7 +8,7 @@ int boxSizeX = 289;
 int boxSizeY = 111;
 
 
-int doomTimer = 2000;
+int doomTimer = 200;
 
 boolean pandoraUnlocked = false;
 boolean pandoraOpened = false;
@@ -97,6 +97,7 @@ class Box {
 println(doomTimer);
 println(numberCounter);
     if (pandoraOpened) {
+      blendMode(NORMAL);
       image (box, 0, 0);
       image(leftArrow, 0, 0);
       image(rightArrow, 0, 0);
@@ -120,7 +121,7 @@ println(numberCounter);
       fill (255, 200);
 
       text("WHAT HAVE YOU DONE?", width/2 + random(-spread, spread), height/2 + random(-spread, spread));
-      
+      doomTimer--;
      
   
     }
