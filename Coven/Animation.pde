@@ -1,4 +1,4 @@
-PImage p1, p2, p3, p4, pEye;
+PImage p1, p2, p3, p4, pEye; //set up images to be converted into dots
 ArrayList<Dot> dots;
 ArrayList<PVector> target1, target2, target3, target4, target5;
 boolean imageToggled = false;
@@ -108,7 +108,7 @@ class Animation {
   void draw() {
 
     blendMode(LIGHTEST);
-
+//this blend mode helps the drawins appear while also not drawing on top of the T.V too much
 
     boolean flipTargets = true;
 
@@ -116,7 +116,7 @@ class Animation {
       dot.run();
       if (!dot.ready) flipTargets = false;
     }
-
+//depending on the flipCounter, a certain drawing will show
     if (flipTargets) {
       for (Dot dot : dots) {
         if (!imageToggled && flipCounter == 1) {
