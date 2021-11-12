@@ -5,7 +5,7 @@ Eyes eye1;
 Eyes eye2;
 
 PImage TV;
-PImage gradient;
+
 int alphaValue = 0;
 class TV {
 
@@ -13,7 +13,7 @@ class TV {
     TV = loadImage("Images/TV.png");
     eye1 = new Eyes(377, 674, 10);
     eye2 = new Eyes(26, 22, 10);
-    gradient = loadImage("Images/Gradient.png");
+    
   }
   void draw() {
     if (gameState == "PLAY") {
@@ -42,7 +42,7 @@ class TV {
           b *= adjustBrightness;
 
 
-
+//a flashlight effect is being made
 
 
           pixels[loc] = color(r, g, b);
@@ -52,9 +52,9 @@ class TV {
       }
     }
     eye1.run();
-    eye2.run();
+    eye2.run(); //eyes in the cracks on of the T.V that follow the mouse
 
-    switch(flipCounter) {
+    switch(flipCounter) { //text that displays depending on what program is run on the TV; tells the story
     case 1:
       textSize(30);
       fill(#88C499, 175);
