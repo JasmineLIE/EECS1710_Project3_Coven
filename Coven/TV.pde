@@ -1,64 +1,109 @@
 //Flashlight effect reference: http://learningprocessing.com/examples/chp15/example-15-09-FlashLight
+
 int numEyes = 2;
 Eyes eye1;
 Eyes eye2;
 
 PImage TV;
-PGraphics pg;
+PImage gradient;
 int alphaValue = 0;
 class TV {
 
-  void loadImages() {
+  void loadImages() { //also works as general setup
     TV = loadImage("Images/TV.png");
     eye1 = new Eyes(377, 674, 10);
     eye2 = new Eyes(26, 22, 10);
- 
-    
+    gradient = loadImage("Images/Gradient.png");
   }
   void draw() {
-if (gameState == "PLAY") {
-  
-  loadPixels();
-  TV.loadPixels();
+    if (gameState == "PLAY") {
 
-//flashlight affect; manipulates pixels; the brightest area follows the cursorx
-  for (int x = 0; x < TV.width; x++ ) {
-    for (int y = 0; y < TV.height; y++ ) {
+      loadPixels();
+      TV.loadPixels();
 
-      int loc = x + y*TV.width;
+      //flashlight affect; manipulates pixels; the brightest area follows the cursorx
+      for (int x = 0; x < TV.width; x++ ) {
+        for (int y = 0; y < TV.height; y++ ) {
 
-    
-      float r = red  (TV.pixels[loc]);
-      float g = green(TV.pixels[loc]);
-      float b = blue (TV.pixels[loc]);
+          int loc = x + y*TV.width;
 
 
-      float distance = dist(x, y, mouseX, mouseY);
+          float r = red  (TV.pixels[loc]);
+          float g = green(TV.pixels[loc]);
+          float b = blue (TV.pixels[loc]);
 
 
-      float adjustBrightness = map(distance, 0.5, 500, 2, 0.5);
-      r *= adjustBrightness;
-      g *= adjustBrightness;
-      b *= adjustBrightness;
+          float distance = dist(x, y, mouseX, mouseY);
 
- 
 
- 
-     
-      pixels[loc] = color(r, g, b);
-      
+          float adjustBrightness = map(distance, 0.5, 500, 2, 0.5);
+          r *= adjustBrightness;
+          g *= adjustBrightness;
+          b *= adjustBrightness;
 
+
+
+
+
+          pixels[loc] = color(r, g, b);
+        }
+
+        updatePixels();
+      }
+    }
+    eye1.run();
+    eye2.run();
+
+    switch(flipCounter) {
+    case 1:
+      textSize(30);
+      fill(#88C499, 175);
+      textAlign(CENTER);
+      text("ACT 1", 135, 600);
+
+      textSize(25);
+
+      textAlign(CENTER);
+      text("There once was a Witch King who had three beating hearts \n His influence stretched near and far.", width/2, 650);
+      break;
+    case 2:
+      textSize(30);
+      fill(#88C499, 175);
+      textAlign(CENTER);
+      text("ACT 2", 135, 600);
+
+      textSize(25);
+
+      textAlign(CENTER);
+      text("His name was Sable the III, tyrannical and mad. \n He craved power through means oh so crass.", width/2, 650);
+      break;
+    case 3:
+      textSize(30);
+      fill(#88C499, 175);
+      textAlign(CENTER);
+      text("ACT 3", 135, 600);
+
+      textSize(25);
+
+      textAlign(CENTER);
+      text("On the third year of his reign, on the third month \n of the third day, he met his demise", width/2, 650);
+
+      break;
+    case 4:
+      textSize(30);
+      fill(#88C499, 175);
+      textAlign(CENTER);
+      text("ACT 4", 135, 600);
+
+      textSize(25);
+
+      textAlign(CENTER);
+      text("His soul was locked away thrice by the Bright Witches.\n No other means of banishment would have sufficed", width/2, 650);
+      break;
+    }
   }
 
-  updatePixels();
-   
-  }
-  }
-  eye1.run();
-  eye2.run();
-  }
-  
   void run() {
-   draw(); 
+    draw();
   }
 }
