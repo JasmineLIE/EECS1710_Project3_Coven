@@ -1,7 +1,7 @@
 void mousePressed() {
   if (readyToProceed) {
     gameState = "PLAY";
-  }
+  }//depending on what arrow button on the box is pressed, the number counter will go up or down
   if (mouseX > bxR-arrowSizeX && mouseX < bxR+arrowSizeX && 
     mouseY > byR-arrowSizeY && mouseY < byR+arrowSizeY && pandoraOpened) {
     buttonPress.play();
@@ -18,13 +18,15 @@ void mousePressed() {
     mouseY > byO-boxSizeY && mouseY < byO+boxSizeY && pandoraOpened  && numberCounter == 2) {
     pandoraUnlocked = true;
     
+    //if the number counter is at 2, which is where the element '3' is kept in the array, pandora's box will be unlocked
     
 } else if (mouseX > bxO-boxSizeX && mouseX < bxO+boxSizeX && 
     mouseY > byO-boxSizeY && mouseY < byO+boxSizeY && pandoraOpened) {
    error.play();
+   //otherwise, other numbers will generate an error sound if the unlock button is pressed and it is not the correct number
 }
 }
-void keyPressed() {
+void keyPressed() { //sound that toggles when the box is viewed
   if (gameState == "PLAY" ) {
     if (key == 'x') {
       if (pandoraOpened) {
@@ -39,7 +41,7 @@ void keyPressed() {
       }
     }
   }
- if (!pandoraOpened) { 
+ if (!pandoraOpened) {  //set what image on the T.V is being viewed
   if (key == '1') {
  flipCounter = 1; 
  buttonPress.play();
