@@ -39,4 +39,25 @@ void keyPressed() {
       }
     }
   }
+ if (!pandoraOpened) { 
+  if (key == '1') {
+ flipCounter = 1; 
+ buttonPress.play();
+
+
+} else if (key == '2') {
+ flipCounter = 2; 
+buttonPress.play();
+
+} else if (key == '3') {
+ flipCounter = 3; 
+buttonPress.play();
+
+} else if (key == '4') {
+ flipCounter = 4; 
+buttonPress.play();
+ 
+}
+
+}
 }
